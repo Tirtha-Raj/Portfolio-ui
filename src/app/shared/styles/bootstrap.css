@@ -1,0 +1,127 @@
+/* Bootstrap Customization for Dark Theme */
+
+@import 'bootstrap/scss/bootstrap.scss';
+
+/* Override Bootstrap defaults */
+$primary: #6366f1;
+$secondary: #334155;
+$success: #16a34a;
+$danger: #dc2626;
+$warning: #d97706;
+$info: #3b82f6;
+$light: #cbd5e1;
+$dark: #0f172a;
+
+/* Bootstrap overrides */
+:root {
+  --bs-body-bg: #0f172a;
+  --bs-body-color: #e2e8f0;
+  --bs-border-color: #334155;
+  --bs-link-color: #6366f1;
+}
+
+body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.text-secondary {
+  color: #cbd5e1 !important;
+}
+
+.btn {
+  font-weight: 500;
+  border-radius: 0.625rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #6366f1;
+  border-color: #6366f1;
+}
+
+.btn-primary:hover {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.form-control,
+.form-select {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #1e293b;
+  border-color: #6366f1;
+  color: #e2e8f0;
+  box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+.form-control::placeholder {
+  color: #94a3b8;
+}
+
+.nav-link {
+  color: #cbd5e1 !important;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #6366f1 !important;
+}
+
+.nav-link.active {
+  color: #6366f1 !important;
+}
+
+.navbar-dark {
+  border-bottom: 1px solid #334155;
+}
+
+.card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #cbd5e1;
+}
+
+.card-header {
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+}
+
+.modal-content {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.modal-header {
+  border-bottom: 1px solid #334155;
+}
+
+.table {
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #334155;
+}
+
+.pagination {
+  --bs-pagination-bg: #1e293b;
+  --bs-pagination-active-bg: #6366f1;
+  --bs-pagination-border-color: #334155;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  --bs-breadcrumb-divider-color: #475569;
+}
+
+.alert {
+  border: none;
+  border-radius: 0.625rem;
+}

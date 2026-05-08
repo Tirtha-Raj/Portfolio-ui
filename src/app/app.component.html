@@ -1,22 +1,11 @@
-﻿<header class="portal-header">
-  <div class="brand">
-    <a routerLink="/">Portfolio</a>
-  </div>
+﻿<app-navbar></app-navbar>
 
-  <nav class="navigation">
-    <a routerLink="/">Projects</a>
-    <a routerLink="/blogs">Blog</a>
-    <a routerLink="/contact">Contact</a>
-    <a routerLink="/admin" *ngIf="auth.isAdmin">Admin</a>
-  </nav>
+<div class="app-shell">
+  <main class="main-content">
+    <div class="container content-container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
 
-  <div class="actions">
-    <span *ngIf="auth.isLoggedIn" class="user-label">{{ auth.user?.username }}</span>
-    <a routerLink="/login" *ngIf="!auth.isLoggedIn">Login</a>
-    <button *ngIf="auth.isLoggedIn" class="action-button" (click)="logout()">Logout</button>
-  </div>
-</header>
-
-<main class="page-shell">
-  <router-outlet></router-outlet>
-</main>
+  <app-footer></app-footer>
+</div>

@@ -1,19 +1,18 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home.component';
-import { ProjectDetailComponent } from './pages/project-detail.component';
-import { BlogListComponent } from './pages/blog-list.component';
-import { BlogDetailComponent } from './pages/blog-detail.component';
-import { ContactComponent } from './pages/contact.component';
-import { AdminDashboardComponent } from './pages/admin-dashboard.component';
-import { LoginComponent } from './pages/login.component';
+import { AUTH_ROUTES } from './features/auth/auth.routes';
+import { PROJECTS_ROUTES } from './features/projects/projects.routes';
+import { BLOGS_ROUTES } from './features/blogs/blogs.routes';
+import { CONTACT_ROUTES } from './features/contact/contact.routes';
+import { ADMIN_ROUTES } from './features/admin/admin.routes';
+import { SKILLS_ROUTES } from './features/skills/skills.routes';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'projects/:id', component: ProjectDetailComponent },
-  { path: 'blogs', component: BlogListComponent },
-  { path: 'blogs/:id', component: BlogDetailComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'admin', component: AdminDashboardComponent },
-  { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: '' }
+  { path: '', redirectTo: 'projects', pathMatch: 'full' },
+  { path: 'projects', children: PROJECTS_ROUTES },
+  { path: 'blogs', children: BLOGS_ROUTES },
+  { path: 'skills', children: SKILLS_ROUTES },
+  { path: 'contact', children: CONTACT_ROUTES },
+  { path: 'login', children: AUTH_ROUTES },
+  { path: 'admin', children: ADMIN_ROUTES },
+  { path: '**', redirectTo: 'projects' }
 ];
