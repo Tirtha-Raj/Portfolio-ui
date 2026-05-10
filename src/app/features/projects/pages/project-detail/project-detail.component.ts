@@ -32,14 +32,14 @@ import { AuthService } from '../../../../core/services/auth.service';
           <p class="subtitle">{{ project.description }}</p>
 
           <div class="project-meta">
-            <span class="tech-stack">{{ project.techStack }}</span>
+            <span class="meta-badge">{{ project.techStack }}</span>
             <span class="meta-item">
               <span class="icon">👀</span>
-              {{ project.viewsCount | number }} views
+              {{ project.viewsCount | number }}
             </span>
             <span class="meta-item">
               <span class="icon">❤️</span>
-              {{ project.likesCount | number }} likes
+              {{ project.likesCount | number }}
             </span>
           </div>
         </div>
@@ -56,7 +56,7 @@ import { AuthService } from '../../../../core/services/auth.service';
             rel="noopener noreferrer"
             class="btn btn-external"
           >
-            <span class="icon">🌐</span> Live Demo
+            <span class="icon">↗</span> Live Demo
           </a>
           <a
             *ngIf="project.githubUrl"
@@ -65,7 +65,7 @@ import { AuthService } from '../../../../core/services/auth.service';
             rel="noopener noreferrer"
             class="btn btn-external"
           >
-            <span class="icon">💾</span> Source Code
+            <span class="icon">→</span> Source
           </a>
         </div>
       </div>
@@ -76,12 +76,12 @@ import { AuthService } from '../../../../core/services/auth.service';
       <!-- Details Section -->
       <div class="details-section">
         <div class="detail-box">
-          <h3>About This Project</h3>
+          <h3>Overview</h3>
           <p>{{ project.description }}</p>
         </div>
 
         <div class="detail-box">
-          <h3>Technologies</h3>
+          <h3>Tech Stack</h3>
           <div class="tech-tags">
             <span *ngFor="let tech of getTechs()" class="tech-tag">
               {{ tech }}
@@ -90,10 +90,10 @@ import { AuthService } from '../../../../core/services/auth.service';
         </div>
       </div>
 
-      <!-- Actions -->
+      <!-- Back Button -->
       <div class="action-footer">
         <a routerLink="/projects" class="btn btn-back">
-          ← Back to All Projects
+          ← Back
         </a>
       </div>
     </div>
@@ -116,7 +116,7 @@ import { AuthService } from '../../../../core/services/auth.service';
         width: 48px;
         height: 48px;
         border: 4px solid rgba(138, 180, 248, 0.2);
-        border-top-color: #8ab4f8;
+        border-top-color: var(--primary);
         border-radius: 50%;
         animation: spin 0.8s linear infinite;
         margin-bottom: 1rem;
@@ -129,21 +129,21 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .loading-state p {
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 1rem;
       }
 
       /* Alert */
       .alert {
         padding: 1.25rem 1.5rem;
-        border-radius: 0.75rem;
+        border-radius: 0.85rem;
         border: 1px solid;
         margin-bottom: 1.5rem;
       }
 
       .alert-danger {
-        background: rgba(248, 113, 113, 0.1);
-        border-color: #f87171;
+        background: rgba(248, 113, 113, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
         color: #fecaca;
       }
 
@@ -168,8 +168,10 @@ import { AuthService } from '../../../../core/services/auth.service';
         justify-content: space-between;
         align-items: flex-start;
         gap: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
         flex-wrap: wrap;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(138, 180, 248, 0.12);
       }
 
       .header-content {
@@ -181,27 +183,27 @@ import { AuthService } from '../../../../core/services/auth.service';
         text-transform: uppercase;
         font-size: 0.75rem;
         letter-spacing: 0.3em;
-        color: #8ab4f8;
-        margin: 0 0 0.75rem;
-        font-weight: 600;
-      }
-
-      h1,
-      h2,
-      h3 {
-        color: #e2e8f0;
+        color: var(--primary);
+        margin: 0 0 0.5rem;
+        font-weight: 700;
       }
 
       h1 {
-        margin: 0 0 1rem;
-        font-size: 2.75rem;
-        font-weight: 700;
-        line-height: 1.1;
+        margin: 0 0 0.75rem;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+
+      h3 {
+        color: var(--text);
       }
 
       .subtitle {
         font-size: 1.1rem;
-        color: #cbd5e1;
+        color: var(--muted);
         margin: 0 0 1.5rem;
         line-height: 1.6;
       }
@@ -213,21 +215,23 @@ import { AuthService } from '../../../../core/services/auth.service';
         align-items: center;
       }
 
-      .tech-stack {
-        background: rgba(138, 180, 248, 0.1);
-        color: #8ab4f8;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
+      .meta-badge {
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        padding: 0.5rem 1.2rem;
+        border-radius: 0.6rem;
         font-weight: 600;
         font-size: 0.9rem;
+        border: 1px solid rgba(138, 180, 248, 0.24);
       }
 
       .meta-item {
         display: flex;
         align-items: center;
         gap: 0.4rem;
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.95rem;
+        font-weight: 600;
       }
 
       .icon {
@@ -242,9 +246,9 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .btn {
-        padding: 0.875rem 1.5rem;
+        padding: 0.85rem 1.25rem;
         border: none;
-        border-radius: 0.75rem;
+        border-radius: 0.9rem;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -257,13 +261,13 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .btn-like {
-        background: rgba(248, 113, 113, 0.1);
-        color: #f87171;
-        border: 1px solid #f87171;
+        background: rgba(248, 113, 113, 0.12);
+        color: var(--danger);
+        border: 1px solid rgba(248, 113, 113, 0.24);
       }
 
       .btn-like.liked {
-        background: #f87171;
+        background: var(--danger);
         color: #fff;
       }
 
@@ -273,9 +277,9 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .btn-external {
-        background: rgba(138, 180, 248, 0.1);
-        color: #8ab4f8;
-        border: 1px solid #8ab4f8;
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        border: 1px solid rgba(138, 180, 248, 0.24);
       }
 
       .btn-external:hover {
@@ -284,52 +288,53 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .btn-back {
-        background: rgba(99, 102, 241, 0.1);
-        color: #8ab4f8;
-        border: 1px solid #6366f1;
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        border: 1px solid rgba(138, 180, 248, 0.24);
       }
 
       .btn-back:hover {
-        background: rgba(99, 102, 241, 0.2);
+        background: rgba(138, 180, 248, 0.2);
         transform: translateY(-2px);
       }
 
       /* Divider */
       .divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(138, 180, 248, 0.2), transparent);
-        margin: 2rem 0;
+        background: linear-gradient(90deg, transparent, rgba(138, 180, 248, 0.12), transparent);
+        margin: 0;
       }
 
       /* Details Section */
       .details-section {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2rem;
-        margin-bottom: 2rem;
+        margin: 3rem 0;
       }
 
       .detail-box {
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(138, 180, 248, 0.1);
+        background: rgba(11, 18, 33, 0.6);
+        border: 1px solid rgba(138, 180, 248, 0.12);
         border-radius: 1rem;
-        padding: 1.75rem;
-        transition: all 0.2s ease;
+        padding: 2rem;
+        transition: all 0.3s ease;
       }
 
       .detail-box:hover {
-        border-color: #8ab4f8;
-        background: rgba(15, 23, 42, 0.8);
+        border-color: var(--primary);
+        background: rgba(11, 18, 33, 0.8);
       }
 
       .detail-box h3 {
-        margin: 0 0 1rem;
-        font-size: 1.2rem;
+        margin: 0 0 1.25rem;
+        font-size: 1.3rem;
+        font-weight: 700;
       }
 
       .detail-box p {
-        color: #cbd5e1;
-        line-height: 1.7;
+        color: var(--muted);
+        line-height: 1.8;
         margin: 0;
       }
 
@@ -341,19 +346,19 @@ import { AuthService } from '../../../../core/services/auth.service';
 
       .tech-tag {
         display: inline-block;
-        background: rgba(99, 102, 241, 0.15);
-        color: #c7d2fe;
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        padding: 0.6rem 1.2rem;
+        border-radius: 0.7rem;
         font-size: 0.9rem;
-        font-weight: 500;
-        border: 1px solid rgba(99, 102, 241, 0.3);
+        font-weight: 600;
+        border: 1px solid rgba(138, 180, 248, 0.24);
         transition: all 0.2s ease;
       }
 
       .tech-tag:hover {
-        background: rgba(99, 102, 241, 0.25);
-        border-color: rgba(99, 102, 241, 0.5);
+        background: rgba(138, 180, 248, 0.2);
+        border-color: rgba(138, 180, 248, 0.4);
         transform: translateY(-2px);
       }
 
@@ -362,18 +367,20 @@ import { AuthService } from '../../../../core/services/auth.service';
         display: flex;
         justify-content: flex-start;
         gap: 1rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(138, 180, 248, 0.1);
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(138, 180, 248, 0.12);
       }
 
       /* Responsive */
       @media (max-width: 768px) {
         h1 {
-          font-size: 1.75rem;
+          font-size: 2rem;
         }
 
         .detail-header {
           flex-direction: column;
+          gap: 1.5rem;
         }
 
         .header-actions {
@@ -384,6 +391,7 @@ import { AuthService } from '../../../../core/services/auth.service';
         .header-actions .btn {
           flex: 1;
           justify-content: center;
+          min-width: 80px;
         }
 
         .project-meta {
@@ -392,6 +400,11 @@ import { AuthService } from '../../../../core/services/auth.service';
 
         .details-section {
           grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .detail-box {
+          padding: 1.5rem;
         }
 
         .btn {

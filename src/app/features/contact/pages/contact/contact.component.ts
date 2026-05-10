@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { ContactApiService } from '../../../../data/api/contact.api';
-import { AnalyticsApiService } from '../../../../data/api/analytics.api';
 
 @Component({
   standalone: true,
@@ -156,6 +155,8 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
 
       .contact-header {
         margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(138, 180, 248, 0.12);
       }
 
       .header-content {
@@ -166,28 +167,31 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
         text-transform: uppercase;
         font-size: 0.75rem;
         letter-spacing: 0.3em;
-        color: #8ab4f8;
+        color: var(--primary);
         margin: 0 0 0.5rem;
-        font-weight: 600;
+        font-weight: 700;
       }
 
       h1 {
         margin: 0 0 0.75rem;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #e2e8f0;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--text);
+        letter-spacing: -0.02em;
       }
 
       .subtitle {
-        color: #cbd5e1;
+        color: var(--muted);
         font-size: 1.1rem;
         margin: 0;
+        line-height: 1.6;
       }
 
       /* Alert Messages */
       .alert {
         padding: 1.25rem 1.5rem;
-        border-radius: 0.75rem;
+        border-radius: 0.85rem;
         border: 1px solid;
         margin-bottom: 1.5rem;
         display: flex;
@@ -208,14 +212,14 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
       }
 
       .alert-success {
-        background: rgba(16, 185, 129, 0.1);
-        border-color: #10b981;
+        background: rgba(16, 185, 129, 0.12);
+        border-color: rgba(16, 185, 129, 0.3);
         color: #a7f3d0;
       }
 
       .alert-danger {
-        background: rgba(248, 113, 113, 0.1);
-        border-color: #f87171;
+        background: rgba(248, 113, 113, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
         color: #fecaca;
       }
 
@@ -227,66 +231,66 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
       /* Contact Container */
       .contact-container {
         display: grid;
-        grid-template-columns: 1fr 320px;
+        grid-template-columns: 1fr 340px;
         gap: 2rem;
         margin-bottom: 2rem;
       }
 
       /* Contact Form */
       .contact-form {
-        background: rgba(11, 18, 33, 0.8);
-        border: 1px solid rgba(138, 180, 248, 0.1);
+        background: rgba(11, 18, 33, 0.6);
+        border: 1px solid rgba(138, 180, 248, 0.12);
         border-radius: 1rem;
         padding: 2rem;
       }
 
       .form-group {
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
       }
 
       .form-label {
         display: block;
-        margin-bottom: 0.5rem;
-        color: #e2e8f0;
-        font-weight: 600;
+        margin-bottom: 0.6rem;
+        color: var(--text);
+        font-weight: 700;
         font-size: 0.95rem;
       }
 
       .form-control {
         width: 100%;
-        padding: 0.875rem 1rem;
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        border-radius: 0.75rem;
-        color: #e2e8f0;
+        padding: 0.95rem 1rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        border-radius: 0.85rem;
+        color: var(--text);
         font-size: 1rem;
         transition: all 0.2s ease;
       }
 
       .form-control:focus {
         outline: none;
-        border-color: #8ab4f8;
-        background: rgba(15, 23, 42, 0.8);
-        box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.1);
+        border-color: var(--primary);
+        background: rgba(15, 23, 42, 0.9);
+        box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.12);
       }
 
       .form-control::placeholder {
-        color: #64748b;
+        color: rgba(255, 255, 255, 0.5);
       }
 
       .form-control.is-invalid {
-        border-color: #f87171;
+        border-color: var(--danger);
         background: rgba(248, 113, 113, 0.05);
       }
 
       .form-control.is-invalid:focus {
-        border-color: #f87171;
-        box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.1);
+        border-color: var(--danger);
+        box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.12);
       }
 
       .form-textarea {
         resize: vertical;
-        min-height: 150px;
+        min-height: 160px;
         font-family: inherit;
       }
 
@@ -299,7 +303,7 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
 
       .char-count {
         display: block;
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.8rem;
         margin-top: 0.4rem;
         text-align: right;
@@ -307,9 +311,9 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
 
       /* Submit Button */
       .btn {
-        padding: 0.95rem 1.75rem;
+        padding: 0.95rem 2rem;
         border: none;
-        border-radius: 0.75rem;
+        border-radius: 0.9rem;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -320,7 +324,7 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
       }
 
       .btn-submit {
-        background: #8ab4f8;
+        background: var(--primary);
         color: #050b14;
         width: 100%;
         justify-content: center;
@@ -329,7 +333,7 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
       .btn-submit:hover:not(:disabled) {
         background: #c7d2fe;
         transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(138, 180, 248, 0.3);
+        box-shadow: 0 10px 30px rgba(138, 180, 248, 0.2);
       }
 
       .btn-submit:disabled {
@@ -367,9 +371,9 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
       }
 
       .form-note {
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.9rem;
-        margin-top: 1rem;
+        margin-top: 1.5rem;
         text-align: center;
       }
 
@@ -377,32 +381,32 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
       .contact-info {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
       }
 
       .info-card {
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(138, 180, 248, 0.1);
-        border-radius: 0.75rem;
-        padding: 1.25rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(138, 180, 248, 0.12);
+        border-radius: 1rem;
+        padding: 1.5rem;
         transition: all 0.2s ease;
       }
 
       .info-card:hover {
-        border-color: #8ab4f8;
-        background: rgba(15, 23, 42, 0.8);
+        border-color: var(--primary);
+        background: rgba(15, 23, 42, 0.9);
       }
 
       .info-card h3 {
         margin: 0 0 0.75rem;
         font-size: 1rem;
-        color: #e2e8f0;
-        font-weight: 600;
+        color: var(--text);
+        font-weight: 700;
       }
 
       .info-card p {
         margin: 0;
-        color: #cbd5e1;
+        color: var(--muted);
         font-size: 0.9rem;
       }
 
@@ -413,24 +417,24 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
       }
 
       .info-card li {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.6rem;
       }
 
       .info-card a {
-        color: #8ab4f8;
+        color: var(--primary);
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
         transition: color 0.2s ease;
       }
 
       .info-card a:hover {
-        color: #c7d2fe;
+        color: #bfdbfe;
       }
 
       /* Responsive */
       @media (max-width: 768px) {
         h1 {
-          font-size: 1.75rem;
+          font-size: 2rem;
         }
 
         .contact-container {
@@ -438,7 +442,7 @@ import { AnalyticsApiService } from '../../../../data/api/analytics.api';
         }
 
         .contact-form {
-          padding: 1.5rem;
+          padding: 1.75rem;
         }
 
         .contact-info {
@@ -463,8 +467,7 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private contactApi: ContactApiService,
-    private analyticsApi: AnalyticsApiService
+    private contactApi: ContactApiService
   ) {
     this.initializeForm();
   }
@@ -518,16 +521,6 @@ export class ContactComponent implements OnInit, OnDestroy {
           this.successMessage = 'Your message has been sent successfully! I\'ll get back to you soon.';
           this.contactForm.reset();
           this.isSubmitting = false;
-
-          // Trigger analytics event
-          this.analyticsApi
-            .trackEvent('CONTACT_MESSAGE_SENT', 'contact')
-            .pipe(takeUntil(this.destroy$))
-            .subscribe({
-              error: () => {
-                // Silently fail - analytics is not critical
-              }
-            });
 
           // Clear success message after 5 seconds
           setTimeout(() => {

@@ -13,27 +13,27 @@ import { AuthService } from '../../../../core/services/auth.service';
   selector: 'app-projects-home',
   imports: [CommonModule, FormsModule, RouterLink],
   template: `
-    <!-- Search Header -->
-    <div class="projects-header">
-      <div class="header-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
         <p class="eyebrow">Portfolio</p>
-        <h1>Featured Projects</h1>
-        <p class="subtitle">Explore latest projects and discover what's trending</p>
+        <h1 class="hero-title">Featured Projects</h1>
+        <p class="hero-copy">Full-stack development work showcasing modern architecture, clean code, and scalable solutions.</p>
       </div>
 
       <div class="search-box">
         <input
           type="text"
-          placeholder="Search projects..."
+          placeholder="Search by name, tech stack, or description..."
           [(ngModel)]="searchTerm"
           (keyup.enter)="onSearch()"
           class="search-input"
         />
         <button (click)="onSearch()" class="btn btn-primary">
-          <span>Search</span>
+          Search
         </button>
       </div>
-    </div>
+    </section>
 
     <!-- Trending Section -->
     <div class="trending-section" *ngIf="!searchTerm">
@@ -174,11 +174,13 @@ import { AuthService } from '../../../../core/services/auth.service';
         display: block;
       }
 
-      .projects-header {
-        margin-bottom: 3rem;
+      .hero-section {
+        margin-bottom: 3.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(138, 180, 248, 0.12);
       }
 
-      .header-content {
+      .hero-content {
         margin-bottom: 2rem;
       }
 
@@ -186,60 +188,59 @@ import { AuthService } from '../../../../core/services/auth.service';
         text-transform: uppercase;
         font-size: 0.75rem;
         letter-spacing: 0.3em;
-        color: #8ab4f8;
+        color: var(--primary);
         margin: 0 0 0.5rem;
-        font-weight: 600;
-      }
-
-      h1,
-      h2,
-      h3 {
-        color: #e2e8f0;
-      }
-
-      h1 {
-        margin: 0 0 0.75rem;
-        font-size: 2.5rem;
         font-weight: 700;
       }
 
-      .subtitle {
-        color: #cbd5e1;
-        font-size: 1.1rem;
+      .hero-title {
+        margin: 0 0 0.75rem;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+
+      .hero-copy {
         margin: 0;
+        font-size: 1.1rem;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 580px;
       }
 
       .search-box {
         display: flex;
         gap: 0.75rem;
-        max-width: 500px;
+        max-width: 680px;
       }
 
       .search-input {
         flex: 1;
-        padding: 0.875rem 1.25rem;
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        border-radius: 0.75rem;
-        color: #e2e8f0;
+        padding: 0.95rem 1.5rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        border-radius: 0.9rem;
+        color: var(--text);
         font-size: 1rem;
         transition: all 0.2s ease;
       }
 
       .search-input:focus {
         outline: none;
-        border-color: #8ab4f8;
-        background: rgba(15, 23, 42, 0.8);
+        border-color: var(--primary);
+        background: rgba(15, 23, 42, 0.9);
       }
 
       .search-input::placeholder {
-        color: #64748b;
+        color: rgba(255, 255, 255, 0.5);
       }
 
       .btn {
-        padding: 0.875rem 1.5rem;
+        padding: 0.95rem 2rem;
         border: none;
-        border-radius: 0.75rem;
+        border-radius: 0.9rem;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -247,33 +248,35 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .btn-primary {
-        background: #8ab4f8;
+        background: var(--primary);
         color: #050b14;
       }
 
       .btn-primary:hover {
         background: #c7d2fe;
         transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(138, 180, 248, 0.2);
       }
 
       .btn-secondary {
-        background: rgba(138, 180, 248, 0.1);
-        color: #8ab4f8;
-        border: 1px solid #8ab4f8;
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        border: 1px solid rgba(138, 180, 248, 0.3);
       }
 
       .btn-secondary:hover {
         background: rgba(138, 180, 248, 0.2);
+        border-color: var(--primary);
       }
 
       .btn-like {
         background: rgba(248, 113, 113, 0.1);
-        color: #f87171;
-        border: 1px solid #f87171;
+        color: var(--danger);
+        border: 1px solid rgba(248, 113, 113, 0.3);
       }
 
       .btn-like.liked {
-        background: #f87171;
+        background: var(--danger);
         color: #fff;
       }
 
@@ -287,8 +290,8 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .btn-pagination {
-        background: rgba(138, 180, 248, 0.1);
-        color: #8ab4f8;
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
         padding: 0.75rem 1.25rem;
       }
 
@@ -298,9 +301,9 @@ import { AuthService } from '../../../../core/services/auth.service';
 
       /* Trending Section */
       .trending-section {
-        margin-bottom: 3rem;
-        background: rgba(15, 23, 42, 0.5);
-        border: 1px solid rgba(148, 163, 184, 0.1);
+        margin-bottom: 3.5rem;
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid rgba(138, 180, 248, 0.12);
         border-radius: 1rem;
         padding: 2rem;
       }
@@ -309,14 +312,16 @@ import { AuthService } from '../../../../core/services/auth.service';
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.75rem;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.5rem;
       }
 
       .section-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin: 0;
+        font-weight: 700;
+        color: var(--text);
       }
 
       .trending-tabs {
@@ -327,49 +332,51 @@ import { AuthService } from '../../../../core/services/auth.service';
       .trending-tab {
         padding: 0.65rem 1.25rem;
         background: transparent;
-        border: 1px solid rgba(148, 163, 184, 0.2);
-        color: #cbd5e1;
-        border-radius: 0.6rem;
+        border: 1px solid rgba(148, 163, 184, 0.24);
+        color: var(--muted);
+        border-radius: 0.7rem;
         cursor: pointer;
         transition: all 0.2s ease;
         font-weight: 500;
+        font-size: 0.9rem;
       }
 
       .trending-tab:hover {
-        border-color: #8ab4f8;
-        color: #8ab4f8;
+        border-color: var(--primary);
+        color: var(--primary);
       }
 
       .trending-tab.active {
-        background: #8ab4f8;
-        border-color: #8ab4f8;
-        color: #050b14;
+        background: rgba(138, 180, 248, 0.12);
+        border-color: var(--primary);
+        color: var(--primary);
       }
 
       .icon {
-        margin-right: 0.35rem;
+        margin-right: 0.3rem;
       }
 
       .trending-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
         gap: 1rem;
       }
 
       .trending-card {
         padding: 1.25rem;
-        background: rgba(6, 11, 23, 0.6);
-        border: 1px solid rgba(138, 180, 248, 0.1);
-        border-radius: 0.75rem;
+        background: rgba(6, 11, 23, 0.5);
+        border: 1px solid rgba(138, 180, 248, 0.12);
+        border-radius: 0.85rem;
         cursor: pointer;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
         position: relative;
       }
 
       .trending-card:hover {
-        border-color: #8ab4f8;
-        background: rgba(6, 11, 23, 0.9);
+        border-color: var(--primary);
+        background: rgba(6, 11, 23, 0.8);
         transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(138, 180, 248, 0.08);
       }
 
       .trending-rank {
@@ -385,9 +392,9 @@ import { AuthService } from '../../../../core/services/auth.service';
         width: 32px;
         height: 32px;
         background: rgba(138, 180, 248, 0.2);
-        border: 1px solid #8ab4f8;
+        border: 1px solid rgba(138, 180, 248, 0.4);
         border-radius: 50%;
-        color: #8ab4f8;
+        color: var(--primary);
         font-weight: 700;
         font-size: 0.85rem;
       }
@@ -396,18 +403,20 @@ import { AuthService } from '../../../../core/services/auth.service';
         margin: 0 0 0.5rem;
         font-size: 1.1rem;
         line-height: 1.3;
+        color: var(--text);
       }
 
       .tech-stack {
-        color: #8ab4f8;
+        color: var(--primary);
         font-size: 0.85rem;
         margin: 0.5rem 0 0.75rem;
+        font-weight: 500;
       }
 
       .trending-stats {
         display: flex;
         gap: 1rem;
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.9rem;
       }
 
@@ -430,26 +439,26 @@ import { AuthService } from '../../../../core/services/auth.service';
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.5rem;
       }
 
       .result-count {
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.95rem;
       }
 
       .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 1.75rem;
         margin-bottom: 2rem;
       }
 
       .project-card {
-        background: rgba(11, 18, 33, 0.8);
-        border: 1px solid rgba(138, 180, 248, 0.1);
+        background: rgba(11, 18, 33, 0.6);
+        border: 1px solid rgba(138, 180, 248, 0.12);
         border-radius: 1rem;
         padding: 1.5rem;
         display: flex;
@@ -466,15 +475,15 @@ import { AuthService } from '../../../../core/services/auth.service';
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(90deg, #8ab4f8, #6366f1);
+        background: linear-gradient(90deg, var(--primary), var(--primary-strong));
         opacity: 0;
         transition: opacity 0.3s ease;
       }
 
       .project-card:hover {
-        border-color: #8ab4f8;
+        border-color: var(--primary);
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(138, 180, 248, 0.1);
+        box-shadow: 0 20px 50px rgba(138, 180, 248, 0.12);
       }
 
       .project-card:hover::before {
@@ -496,30 +505,32 @@ import { AuthService } from '../../../../core/services/auth.service';
 
       .project-title {
         margin: 0;
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         line-height: 1.3;
-        color: #e2e8f0;
+        color: var(--text);
+        font-weight: 700;
       }
 
       .card-badge {
-        background: rgba(248, 113, 113, 0.1);
-        color: #f87171;
-        padding: 0.35rem 0.75rem;
+        background: rgba(248, 113, 113, 0.12);
+        color: var(--danger);
+        padding: 0.4rem 0.8rem;
         border-radius: 0.5rem;
         font-size: 0.85rem;
         font-weight: 700;
         white-space: nowrap;
+        flex-shrink: 0;
       }
 
       .project-meta {
-        color: #8ab4f8;
+        color: var(--primary);
         font-size: 0.9rem;
         margin: 0.5rem 0;
         font-weight: 500;
       }
 
       .project-description {
-        color: #cbd5e1;
+        color: var(--muted);
         font-size: 0.95rem;
         line-height: 1.6;
         margin: 0.75rem 0;
@@ -528,15 +539,15 @@ import { AuthService } from '../../../../core/services/auth.service';
       .project-stats {
         display: flex;
         gap: 1.5rem;
-        margin-top: 1rem;
-        color: #94a3b8;
+        margin-top: 1.25rem;
+        color: var(--muted);
+        font-size: 0.9rem;
       }
 
       .stat-item {
         display: flex;
         align-items: center;
         gap: 0.4rem;
-        font-size: 0.9rem;
       }
 
       .card-actions {
@@ -552,21 +563,21 @@ import { AuthService } from '../../../../core/services/auth.service';
 
       /* Alert Messages */
       .alert {
-        padding: 1rem 1.25rem;
-        border-radius: 0.75rem;
+        padding: 1rem 1.5rem;
+        border-radius: 0.85rem;
         margin-bottom: 1.5rem;
         border: 1px solid;
       }
 
       .alert-danger {
-        background: rgba(248, 113, 113, 0.1);
-        border-color: #f87171;
+        background: rgba(248, 113, 113, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
         color: #fecaca;
       }
 
       .alert-info {
-        background: rgba(138, 180, 248, 0.1);
-        border-color: #8ab4f8;
+        background: rgba(138, 180, 248, 0.12);
+        border-color: rgba(138, 180, 248, 0.3);
         color: #bfdbfe;
       }
 
@@ -581,13 +592,13 @@ import { AuthService } from '../../../../core/services/auth.service';
       }
 
       .page-info {
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.95rem;
       }
 
       .page-info strong {
-        color: #8ab4f8;
-        font-weight: 600;
+        color: var(--primary);
+        font-weight: 700;
       }
 
       /* Loading State */

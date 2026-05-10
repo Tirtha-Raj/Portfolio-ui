@@ -2,7 +2,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(circle at top, rgba(99, 102, 241, 0.12), transparent 35%), #050b14;
+  background: radial-gradient(circle at top, rgba(99, 102, 241, 0.16), transparent 35%), var(--bg);
 }
 
 .main-content {
@@ -10,17 +10,19 @@
 }
 
 .content-container {
-  padding: 3rem 0 2rem;
+  padding: 4rem 0 2.5rem;
+  max-width: 1180px;
+  width: 100%;
 }
 
 .footer-wrapper {
   padding: 1.5rem 0 2rem;
   border-top: 1px solid rgba(148, 163, 184, 0.12);
-  color: #94a3b8;
+  color: var(--muted);
 }
 
 .footer-wrapper a {
-  color: #8ab4f8;
+  color: var(--primary);
 }
 
 .footer-wrapper a:hover {

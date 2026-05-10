@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   standalone: true,
   selector: 'app-loading',
   imports: [CommonModule],
   template: `
-    <div class="loading-container">
-      <div class="spinner"></div>
-      <p class="loading-text">{{ text }}</p>
+    <div class="loading-container" [class]="size">
+      <div class="spinner" [style.width.px]="spinnerSize" [style.height.px]="spinnerSize"></div>
+      <p class="loading-text" *ngIf="text">{{ text }}</p>
     </div>
   `,
   styles: [
@@ -22,9 +22,17 @@ import { Component } from '@angular/core';
         gap: 1rem;
       }
 
+      .loading-container.small {
+        padding: 1rem;
+        gap: 0.5rem;
+      }
+
+      .loading-container.large {
+        padding: 3rem;
+        gap: 1.5rem;
+      }
+
       .spinner {
-        width: 3rem;
-        height: 3rem;
         border: 3px solid #334155;
         border-top: 3px solid #6366f1;
         border-radius: 50%;
@@ -35,6 +43,15 @@ import { Component } from '@angular/core';
         color: #cbd5e1;
         font-size: 0.95rem;
         margin: 0;
+        text-align: center;
+      }
+
+      .small .loading-text {
+        font-size: 0.85rem;
+      }
+
+      .large .loading-text {
+        font-size: 1.1rem;
       }
 
       @keyframes spin {
@@ -46,5 +63,12 @@ import { Component } from '@angular/core';
   ]
 })
 export class LoadingComponent {
-  text = 'Loading...';
+  @Input() text = 'Loading...';
+  @Input() size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() spinnerSize = 48;
+
+  ngOnInit() {
+    if (this.size === 'small') this.spinnerSize = 24;
+    if (this.size === 'large') this.spinnerSize = 64;
+  }
 }

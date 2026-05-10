@@ -111,46 +111,50 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
         text-transform: uppercase;
         font-size: 0.75rem;
         letter-spacing: 0.3em;
-        color: #8ab4f8;
+        color: var(--primary);
         margin: 0 0 0.5rem;
-        font-weight: 600;
-      }
-
-      h1,
-      h2,
-      h3 {
-        color: #e2e8f0;
+        font-weight: 700;
       }
 
       h1 {
         margin: 0 0 0.75rem;
-        font-size: 2.5rem;
-        font-weight: 700;
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--text);
+        letter-spacing: -0.02em;
       }
 
       .subtitle {
-        color: #cbd5e1;
+        color: var(--muted);
         font-size: 1.1rem;
         margin: 0;
+        line-height: 1.6;
+      }
+
+      .blog-header {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(138, 180, 248, 0.12);
       }
 
       /* Alert Messages */
       .alert {
-        padding: 1rem 1.25rem;
-        border-radius: 0.75rem;
+        padding: 1rem 1.5rem;
+        border-radius: 0.85rem;
         margin-bottom: 1.5rem;
         border: 1px solid;
       }
 
       .alert-danger {
-        background: rgba(248, 113, 113, 0.1);
-        border-color: #f87171;
+        background: rgba(248, 113, 113, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
         color: #fecaca;
       }
 
       .alert-info {
-        background: rgba(138, 180, 248, 0.1);
-        border-color: #8ab4f8;
+        background: rgba(138, 180, 248, 0.12);
+        border-color: rgba(138, 180, 248, 0.3);
         color: #bfdbfe;
       }
 
@@ -165,16 +169,18 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
         align-items: center;
         margin-bottom: 2rem;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.5rem;
       }
 
       .section-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin: 0;
+        font-weight: 700;
+        color: var(--text);
       }
 
       .result-count {
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.95rem;
       }
 
@@ -190,20 +196,20 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 2rem;
         padding: 1.75rem;
-        background: rgba(11, 18, 33, 0.8);
-        border: 1px solid rgba(138, 180, 248, 0.1);
+        background: rgba(11, 18, 33, 0.6);
+        border: 1px solid rgba(138, 180, 248, 0.12);
         border-radius: 1rem;
         cursor: pointer;
         transition: all 0.3s ease;
       }
 
       .blog-item:hover {
-        border-color: #8ab4f8;
-        background: rgba(11, 18, 33, 0.95);
+        border-color: var(--primary);
+        background: rgba(11, 18, 33, 0.8);
         transform: translateX(4px);
-        box-shadow: 0 12px 30px rgba(138, 180, 248, 0.08);
+        box-shadow: 0 12px 30px rgba(138, 180, 248, 0.1);
       }
 
       .blog-content {
@@ -213,13 +219,14 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
 
       .blog-title {
         margin: 0 0 0.75rem;
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         line-height: 1.4;
-        color: #e2e8f0;
+        color: var(--text);
+        font-weight: 700;
       }
 
       .blog-excerpt {
-        color: #cbd5e1;
+        color: var(--muted);
         font-size: 0.95rem;
         line-height: 1.6;
         margin: 0 0 1rem;
@@ -227,15 +234,16 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
 
       .blog-footer {
         display: flex;
-        gap: 1.5rem;
+        gap: 1.75rem;
         align-items: center;
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.85rem;
       }
 
       .read-time {
         display: flex;
         align-items: center;
+        font-weight: 500;
       }
 
       .view-count {
@@ -250,12 +258,12 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
 
       .blog-date {
         flex-shrink: 0;
-        color: #8ab4f8;
+        color: var(--primary);
         font-size: 0.85rem;
-        font-weight: 500;
-        background: rgba(138, 180, 248, 0.1);
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
+        font-weight: 600;
+        background: rgba(138, 180, 248, 0.12);
+        padding: 0.5rem 1.2rem;
+        border-radius: 0.6rem;
         white-space: nowrap;
       }
 
@@ -272,7 +280,7 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
       .btn {
         padding: 0.75rem 1.25rem;
         border: none;
-        border-radius: 0.75rem;
+        border-radius: 0.9rem;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -280,9 +288,9 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
       }
 
       .btn-pagination {
-        background: rgba(138, 180, 248, 0.1);
-        color: #8ab4f8;
-        border: 1px solid #8ab4f8;
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        border: 1px solid rgba(138, 180, 248, 0.24);
       }
 
       .btn-pagination:hover:not(:disabled) {
@@ -296,13 +304,13 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
       }
 
       .page-info {
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.95rem;
       }
 
       .page-info strong {
-        color: #8ab4f8;
-        font-weight: 600;
+        color: var(--primary);
+        font-weight: 700;
       }
 
       /* Loading State */
@@ -318,7 +326,7 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
         width: 40px;
         height: 40px;
         border: 3px solid rgba(138, 180, 248, 0.2);
-        border-top-color: #8ab4f8;
+        border-top-color: var(--primary);
         border-radius: 50%;
         animation: spin 0.8s linear infinite;
         margin-bottom: 1rem;
@@ -331,13 +339,13 @@ import { PaginationResponse } from '../../../../core/models/pagination.model';
       }
 
       .loading-state p {
-        color: #94a3b8;
+        color: var(--muted);
       }
 
       /* Responsive */
       @media (max-width: 768px) {
         h1 {
-          font-size: 1.75rem;
+          font-size: 2rem;
         }
 
         .blog-item {

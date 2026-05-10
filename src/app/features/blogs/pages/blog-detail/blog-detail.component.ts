@@ -13,7 +13,7 @@ import { Blog } from '../../../../core/models/blog.model';
     <!-- Loading State -->
     <div *ngIf="loading" class="loading-state">
       <div class="spinner"></div>
-      <p>Loading blog post...</p>
+      <p>Loading article...</p>
     </div>
 
     <!-- Error State -->
@@ -35,11 +35,11 @@ import { Blog } from '../../../../core/models/blog.model';
           </span>
           <span class="meta-item">
             <span class="icon">👀</span>
-            {{ blog.views | number }} view{{ blog.views !== 1 ? 's' : '' }}
+            {{ blog.views | number }}
           </span>
           <span class="meta-item">
             <span class="icon">⏱️</span>
-            {{ getReadTime(blog.content) }} min read
+            {{ getReadTime(blog.content) }} min
           </span>
         </div>
       </div>
@@ -55,7 +55,7 @@ import { Blog } from '../../../../core/models/blog.model';
       <!-- Footer -->
       <div class="blog-footer">
         <a routerLink="/blogs" class="btn btn-back">
-          ← Back to All Articles
+          ← Back
         </a>
       </div>
     </div>
@@ -78,7 +78,7 @@ import { Blog } from '../../../../core/models/blog.model';
         width: 48px;
         height: 48px;
         border: 4px solid rgba(138, 180, 248, 0.2);
-        border-top-color: #8ab4f8;
+        border-top-color: var(--primary);
         border-radius: 50%;
         animation: spin 0.8s linear infinite;
         margin-bottom: 1rem;
@@ -91,21 +91,21 @@ import { Blog } from '../../../../core/models/blog.model';
       }
 
       .loading-state p {
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 1rem;
       }
 
       /* Alert */
       .alert {
         padding: 1.25rem 1.5rem;
-        border-radius: 0.75rem;
+        border-radius: 0.85rem;
         border: 1px solid;
         margin-bottom: 1.5rem;
       }
 
       .alert-danger {
-        background: rgba(248, 113, 113, 0.1);
-        border-color: #f87171;
+        background: rgba(248, 113, 113, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
         color: #fecaca;
       }
 
@@ -127,29 +127,32 @@ import { Blog } from '../../../../core/models/blog.model';
 
       .blog-header {
         margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(138, 180, 248, 0.12);
       }
 
       .eyebrow {
         text-transform: uppercase;
         font-size: 0.75rem;
         letter-spacing: 0.3em;
-        color: #8ab4f8;
-        margin: 0 0 0.75rem;
-        font-weight: 600;
+        color: var(--primary);
+        margin: 0 0 0.5rem;
+        font-weight: 700;
       }
 
       h1 {
         margin: 0 0 1.5rem;
         font-size: 3rem;
-        font-weight: 700;
+        font-weight: 800;
         line-height: 1.2;
-        color: #e2e8f0;
+        color: var(--text);
+        letter-spacing: -0.02em;
       }
 
       .blog-meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 1.5rem;
+        gap: 2rem;
         align-items: center;
       }
 
@@ -157,8 +160,9 @@ import { Blog } from '../../../../core/models/blog.model';
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        color: #94a3b8;
+        color: var(--muted);
         font-size: 0.95rem;
+        font-weight: 600;
       }
 
       .icon {
@@ -168,17 +172,17 @@ import { Blog } from '../../../../core/models/blog.model';
       /* Divider */
       .divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(138, 180, 248, 0.2), transparent);
-        margin: 2rem 0;
+        background: linear-gradient(90deg, transparent, rgba(138, 180, 248, 0.12), transparent);
+        margin: 0;
       }
 
       /* Content */
       .blog-content {
-        margin-bottom: 3rem;
+        margin: 3rem 0;
       }
 
       .content-text {
-        color: #cbd5e1;
+        color: var(--muted);
         font-size: 1.05rem;
         line-height: 1.8;
         word-wrap: break-word;
@@ -186,26 +190,27 @@ import { Blog } from '../../../../core/models/blog.model';
       }
 
       .content-text p {
-        margin: 1.5rem 0;
+        margin: 1.75rem 0;
       }
 
       .content-text h2 {
-        color: #e2e8f0;
+        color: var(--text);
         font-size: 1.75rem;
-        font-weight: 600;
-        margin: 2rem 0 1rem;
+        font-weight: 700;
+        margin: 2.5rem 0 1rem;
+        letter-spacing: -0.01em;
       }
 
       .content-text h3 {
-        color: #cbd5e1;
+        color: var(--text);
         font-size: 1.3rem;
-        font-weight: 600;
-        margin: 1.5rem 0 0.75rem;
+        font-weight: 700;
+        margin: 1.75rem 0 0.75rem;
       }
 
       .content-text ul,
       .content-text ol {
-        margin: 1.5rem 0;
+        margin: 1.75rem 0;
         padding-left: 2rem;
       }
 
@@ -214,37 +219,40 @@ import { Blog } from '../../../../core/models/blog.model';
       }
 
       .content-text code {
-        background: rgba(99, 102, 241, 0.1);
-        color: #c7d2fe;
-        padding: 0.2rem 0.5rem;
-        border-radius: 0.3rem;
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        padding: 0.25rem 0.6rem;
+        border-radius: 0.35rem;
         font-family: 'Courier New', monospace;
         font-size: 0.9rem;
+        font-weight: 600;
       }
 
       .content-text blockquote {
-        border-left: 3px solid #8ab4f8;
-        padding-left: 1.5rem;
-        margin: 1.5rem 0;
-        color: #94a3b8;
+        border-left: 4px solid var(--primary);
+        padding-left: 1.75rem;
+        margin: 2rem 0;
+        color: var(--muted);
         font-style: italic;
+        opacity: 0.9;
       }
 
       /* Footer */
       .blog-footer {
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(138, 180, 248, 0.1);
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid rgba(138, 180, 248, 0.12);
       }
 
       .btn {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.875rem 1.5rem;
-        border: 1px solid #6366f1;
-        background: rgba(99, 102, 241, 0.1);
-        color: #8ab4f8;
-        border-radius: 0.75rem;
+        padding: 0.85rem 1.5rem;
+        border: 1px solid rgba(138, 180, 248, 0.24);
+        background: rgba(138, 180, 248, 0.12);
+        color: var(--primary);
+        border-radius: 0.9rem;
         text-decoration: none;
         font-weight: 600;
         cursor: pointer;
@@ -252,14 +260,14 @@ import { Blog } from '../../../../core/models/blog.model';
       }
 
       .btn-back:hover {
-        background: rgba(99, 102, 241, 0.2);
+        background: rgba(138, 180, 248, 0.2);
         transform: translateY(-2px);
       }
 
       /* Responsive */
       @media (max-width: 768px) {
         h1 {
-          font-size: 1.75rem;
+          font-size: 2rem;
         }
 
         .content-text {
@@ -271,6 +279,14 @@ import { Blog } from '../../../../core/models/blog.model';
           flex-direction: column;
           gap: 0.75rem;
           align-items: flex-start;
+        }
+
+        .content-text h2 {
+          font-size: 1.5rem;
+        }
+
+        .content-text h3 {
+          font-size: 1.1rem;
         }
       }
     `

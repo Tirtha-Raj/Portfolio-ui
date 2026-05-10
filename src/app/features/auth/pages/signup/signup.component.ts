@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { AuthService } from '../../../../core/services/auth.service';
-import { AnalyticsService } from '../../../../core/services/analytics.service';
 
 @Component({
   standalone: true,
@@ -341,8 +340,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router,
-    private analytics: AnalyticsService
+    private router: Router
   ) {
     this.initializeForm();
   }
@@ -408,8 +406,6 @@ export class SignupComponent implements OnInit, OnDestroy {
       .subscribe({
         next: () => {
           this.isSubmitting = false;
-          // Track signup event
-          this.analytics.trackSignup();
           this.router.navigate(['/projects']);
         },
         error: (error) => {
